@@ -11,6 +11,10 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 */
-
+var express = require('express');
+var app = express.createServer(express.logger());
 var fs = require('fs');
 var san = fs.readFileSync("index.html").toString('utf-8');
+app.get('/', function(request, response) {
+ response.send(san);
+});
